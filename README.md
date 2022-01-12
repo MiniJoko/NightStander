@@ -20,7 +20,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/MiniJoko/NightStander">
-    <img src="resources/img/nightstander.png" alt="Logo" width="80" height="80">
+    <img src="resources/img/nightstander.png" alt="Logo" width="200">
   </a>
 
 <h3 align="center">NightStander</h3>
