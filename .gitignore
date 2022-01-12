@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+.pio
+.clang_complete
+.gcc-flags.json
+include/config.h
+src/config.cpp
+.DS_Store
+.vscode
