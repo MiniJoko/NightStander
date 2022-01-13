@@ -1,18 +1,11 @@
 <div id="top"></div>
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -74,23 +67,17 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `minijoko`, `NightStander`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `NightStander`, `A small device for viewing Nightscout data and sending remote overrides to Loop`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 ### Built With
-https://platformio.org/
-https://javl.github.io/image2cpp/
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+
+* [Platform.io](https://platformio.org/)
+* [Nightscout API](https://nightscout.info/)
+* [image2cpp](https://javl.github.io/image2cpp/)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -98,17 +85,18 @@ https://javl.github.io/image2cpp/
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+The following instructions should be able to guide through the process of building this device yourself
 
 ### Prerequisites
+The following components are needed to build this device:
 https://sizable.se/P.JKY/esp32
 https://sizable.se/P.LZ7/0.96%22-i2c-oled-vit
+
 knapplänk
+
 motståndslänk
 
-This is an example of how to list things you need to use the software and how to install them.
+
 * plattformio
   ```sh
 
@@ -116,19 +104,31 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1.
+1. Install Visual Studio Code
+   * Download from https://code.visualstudio.com/
+   * Follow instructions to install for your operating system
+   * Click on Extensions in the left-hand menu and search for "PlatformIO IDE"
+   * Click Install
+
 2. Clone the repo
-   ```sh
-   git clone https://github.com/minijoko/NightStander.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+   * Open a new terminal and paste the following:
+
+     ```
+     git clone https://github.com/minijoko/NightStander.git
+     ```
+   * Navigate into the new folder that was created with the clone command with:
+     ```
+     cd NightStander
+     ```
+
+3. Install PIO libraries
+   * In the same terminal paste this: 
+     ```sh
+     pio lib install
+     ```
+4. Build to ESP
+   * You should now be able to build to your ESP32 by connecting it to your computer and pressing Build
+   
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -137,9 +137,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -148,10 +146,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
 
 See the [open issues](https://github.com/minijoko/NightStander/issues) for a full list of proposed features (and known issues).
 
@@ -188,28 +182,36 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Contact
+---
+### Daniel Mini Johansson  
+daniel@codebymini.se
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+[![Linkedin][linkedin]][linkedin-url-daniel]
+
+[![Github][github]][github-url-daniel]
+
+
+---
+
+### Jonathan Koitsalu
+
+[![Linkedin][linkedin]][linkedin-url-joko]
+
+[![Github][github]][github-url-joko]
+
+---
 
 Project Link: [https://github.com/minijoko/NightStander](https://github.com/minijoko/NightStander)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
+
+[github]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
+
 [contributors-shield]: https://img.shields.io/github/contributors/minijoko/NightStander.svg?style=for-the-badge
 [contributors-url]: https://github.com/minijoko/NightStander/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/minijoko/NightStander.svg?style=for-the-badge
@@ -221,5 +223,9 @@ Project Link: [https://github.com/minijoko/NightStander](https://github.com/mini
 [license-shield]: https://img.shields.io/github/license/minijoko/NightStander.svg?style=for-the-badge
 [license-url]: https://github.com/minijoko/NightStander/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url-daniel]: https://www.linkedin.com/in/daniel-johansson-4b099219a/
 [product-screenshot]: images/screenshot.png
+[linkedin-url-joko]: https://www.linkedin.com/in/jonathan-koitsalu-5885b3160/
+[github-url-joko]: https://github.com/jonathankoitsalu/
+[github-url-daniel]: https://github.com/codebymini
+<!-- README template from https://github.com/othneildrew/Best-README-Template -->
