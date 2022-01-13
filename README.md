@@ -96,12 +96,6 @@ knapplänk
 
 motståndslänk
 
-
-* plattformio
-  ```sh
-
-  ```
-
 ### Installation
 
 1. Install Visual Studio Code
