@@ -150,10 +150,12 @@ bool loadWIFICredsForm(){
   Serial.print("AP IP address: ");
   Serial.println(IP);
   ClearDisplay();
-  displayText(10, 5, String("Connect to:"), TEXT_SIZE, WHITE);
-  displayText(15, 20, String(ssid), TEXT_SIZE, WHITE);
-  displayText(10, 35, String("and visit:"), TEXT_SIZE, WHITE);
-  displayText(15, 50, IP.toString(), TEXT_SIZE, WHITE);
+  displayText(10, 2, String("Connect to:"), TEXT_SIZE, WHITE);
+  displayText(15, 12, String(ssid), TEXT_SIZE, WHITE);
+  displayText(10, 22, String("With password:"), TEXT_SIZE, WHITE);
+  displayText(15, 32, String(password), TEXT_SIZE, WHITE);
+  displayText(10, 42, String("and visit:"), TEXT_SIZE, WHITE);
+  displayText(15, 52, IP.toString(), TEXT_SIZE, WHITE);
   UpdateDisplay();
   server.on("/", handleRoot);
 

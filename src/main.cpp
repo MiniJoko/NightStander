@@ -14,7 +14,9 @@
 #include "overrides.h"
 
 void setup() {
-
+  pinMode(INTERRUPT1, INPUT_PULLDOWN);
+  pinMode(INTERRUPT2, INPUT_PULLDOWN);
+  pinMode(INTERRUPT3, INPUT_PULLDOWN);
   attachInterrupt(digitalPinToInterrupt(INTERRUPT1), HandleInterrupt1, RISING);
   attachInterrupt(digitalPinToInterrupt(INTERRUPT2), HandleInterrupt2, RISING);
   attachInterrupt(digitalPinToInterrupt(INTERRUPT3), HandleInterrupt3, RISING);
@@ -69,12 +71,12 @@ void loop() {
   state.confirmMenu=0;
   state.confirm=0;
   state.OnOff=1;
-  
+
   while(true){
     setState(&state, &menuList);
     StateHandler(&state, &menuList);
   }
-  
+
 }
 
 //setting
