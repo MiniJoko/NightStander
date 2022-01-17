@@ -14,7 +14,9 @@
 #include "overrides.h"
 
 void setup() {
-
+  pinMode(INTERRUPT1, INPUT_PULLDOWN);
+  pinMode(INTERRUPT2, INPUT_PULLDOWN);
+  pinMode(INTERRUPT3, INPUT_PULLDOWN);
   attachInterrupt(digitalPinToInterrupt(INTERRUPT1), HandleInterrupt1, RISING);
   attachInterrupt(digitalPinToInterrupt(INTERRUPT2), HandleInterrupt2, RISING);
   attachInterrupt(digitalPinToInterrupt(INTERRUPT3), HandleInterrupt3, RISING);
@@ -22,10 +24,8 @@ void setup() {
   EEPROM.begin(512);
 
   Serial.begin(115200);
+
   GetWifi();
-
-  //Un-comment if reset of eeprom is needed
-
   delay(500);
 
   InitDisplay();
@@ -36,7 +36,6 @@ void setup() {
   initArduinoTime();
   GetFromEEPROM();
   storeOverrides();
-  //httpPostRequest();
 }
 
 void loop() {
@@ -55,7 +54,7 @@ void loop() {
   addOverrides(&Overrides);
 
   MENU visual;
-  visual.optionCount=2;
+  visual.optionCount=3;
 
   MENULIST menuList;
   menuList.menus[0]=&visual;
@@ -76,7 +75,3 @@ void loop() {
   }
   
 }
-
-//setting
-//remote override
-//back

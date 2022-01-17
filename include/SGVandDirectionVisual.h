@@ -8,4 +8,8 @@ void drawFrame();
 void displaySGVandDirection();
 void visualizeSGVandDirection();
 
+void drawFrame2();
+void drawValueText();
+void displayValues();
+void visualizeValues();
 #endif // SGVANDDIRECTIONVISUAL

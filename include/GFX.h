@@ -7,15 +7,6 @@
 #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 
 #define TEXT_SIZE 1
-#define EEPROM_BOOL 168
-
-#define MENU1 170
-#define MENU2 190
-#define MENU3 210
-#define MENU4 230
-#define MENU5 250
-#define MENU6 270
-
 
 void InitDisplay();
 void UpdateDisplay();
@@ -36,7 +27,4 @@ void drawSGV(int, int, int, uint16_t);
 void drawDirection(int, int, int, uint16_t);
 void drawTime(int , int , int , uint16_t );
 
-//void ShowMenu(MenuList* currentmenu, uint8_t pointer);
-//void ShowSettingMenu(MenuList*, uint8_t);
-//void SetupEEPROM();
 #endif
