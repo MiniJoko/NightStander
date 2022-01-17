@@ -71,5 +71,4 @@ void loop() {
     setState(&state, &menuList);
     StateHandler(&state, &menuList);
   }
-
 }

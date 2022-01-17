@@ -152,6 +152,7 @@ bool loadWIFICredsForm(){
   ClearDisplay();
   displayText(10, 2, String("Connect to:"), TEXT_SIZE, WHITE);
   displayText(15, 12, String(ssid), TEXT_SIZE, WHITE);
+
   displayText(10, 22, String("use password: "), TEXT_SIZE, WHITE);
   displayText(15, 32, password, TEXT_SIZE, WHITE);
   displayText(10, 42, String("and visit:"), TEXT_SIZE, WHITE);

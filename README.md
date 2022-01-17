@@ -116,13 +116,18 @@ motståndslänk
      ```
 
 3. Install PIO libraries
-   * In the same terminal paste this: 
+   * In the same terminal paste this:
      ```sh
      pio lib install
      ```
-4. Build to ESP
+
+4. Create a configfile
+  Copy the contents of config_example.h to a new file named config.h
+
+
+5. Build to ESP
    * You should now be able to build to your ESP32 by connecting it to your computer and pressing Build
-   
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
