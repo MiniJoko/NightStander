@@ -24,10 +24,8 @@ void setup() {
   EEPROM.begin(512);
 
   Serial.begin(115200);
+
   GetWifi();
-
-  //Un-comment if reset of eeprom is needed
-
   delay(500);
 
   InitDisplay();
@@ -38,7 +36,6 @@ void setup() {
   initArduinoTime();
   GetFromEEPROM();
   storeOverrides();
-  //httpPostRequest();
 }
 
 void loop() {
@@ -57,7 +54,7 @@ void loop() {
   addOverrides(&Overrides);
 
   MENU visual;
-  visual.optionCount=2;
+  visual.optionCount=3;
 
   MENULIST menuList;
   menuList.menus[0]=&visual;
@@ -67,8 +64,6 @@ void loop() {
   STATE state;
   state.menu=0;
   state.option=0;
-  state.menuType=0;
-  state.confirmMenu=0;
   state.confirm=0;
   state.OnOff=1;
 
@@ -76,9 +71,4 @@ void loop() {
     setState(&state, &menuList);
     StateHandler(&state, &menuList);
   }
-
 }
-
-//setting
-//remote override
-//back

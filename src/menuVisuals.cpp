@@ -45,8 +45,6 @@ void menu(int option, int optionCount, String options[], const char* titleChr){
     drawArrowUp(3, 7, WHITE);
     drawArrowDown(3, 54, WHITE);
     
-
-    //confirmWindow
     
     UpdateDisplay();
 }
@@ -101,7 +99,10 @@ void cancelOverrideMenu(int confirm){
 }
 
 void visualMenu(int option){
-    if (option == 1){
+    if (option ==2){
+        visualizeValues();
+    }
+    else if (option == 1){
         visualizeGraph();
     }else if (option==0){
         visualizeSGVandDirection();
@@ -112,4 +113,3 @@ void turnOffDisplay(){
     ClearDisplay();
     UpdateDisplay();
 }
-

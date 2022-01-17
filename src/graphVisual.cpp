@@ -133,11 +133,11 @@ void drawGraph(bool dataOn) {
       long long rawTimeStamp = item["date"]; // timestamp in milliseconds
       float dataTimeStamp = (float(rawTimeStamp) / 1000) + 3600; //convert rawdate to seconds and add 1 hour for timezone adjustment
 
-      Serial.print("origoTimestamp: ");
-      Serial.println(origoTimestamp);
+      // Serial.print("origoTimestamp: ");
+      // Serial.println(origoTimestamp);
 
-      Serial.print("dataTimeStamp: ");
-      Serial.println(dataTimeStamp);
+      // Serial.print("dataTimeStamp: ");
+      // Serial.println(dataTimeStamp);
 
       int sgvAmerican = item["sgv"]; // glucose value in mg/dl
       float sgv = float(sgvAmerican) / 18; //convert to mmol/l. SGV = sensor glucose value
@@ -146,8 +146,8 @@ void drawGraph(bool dataOn) {
       float posXfloat = float(xOrigo) - (float(xAxisLength)*posXRatio);
       int posX = round(posXfloat);
 
-      Serial.print("posXRatio: ");
-      Serial.println(posXRatio);
+      // Serial.print("posXRatio: ");
+      // Serial.println(posXRatio);
 
       float yAxisLengthValue = (float(yAxisLength)/float(yUnitLength))*float(yUnitValue);
       float posYRatio = sgv / float(yAxisLengthValue);

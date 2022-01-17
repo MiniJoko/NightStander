@@ -12,12 +12,12 @@
 #include "overrides.h"
 #include "WiFiManager.h"
 
-//http://nightstander.herokuapp.com/api/v1/profile.json?count=
 String prefix = "http://";
 String nightscout;
 String dataSuffix = ".herokuapp.com/api/v1/entries.json?count=";
 String overridesSuffix = ".herokuapp.com/api/v1/profile.json?count=1";
 String sendOverrideSuffix = ".herokuapp.com/api/v2/notifications/loop";
+String valuesSuffix = ".herokuapp.com/api/v2/properties/sage,cage,loop";
 String apikey;
 
 String JSONmsg;
@@ -29,6 +29,11 @@ float maxSGV;
 String direction;
 float date;
 StaticJsonDocument<2048> data;
+
+String SAGE;
+String CAGE;
+double COB;
+double IOB; 
 
 JsonArray overrides;
 OVERRIDE_LIST overrideList = {0};
@@ -66,6 +71,22 @@ JsonArray getOverrides(){
   return overrides;
 }
 
+String getSAGE(){
+  return SAGE;
+}
+
+String getCAGE(){
+  return CAGE;
+}
+
+double getCOB(){
+  return COB;
+}
+
+double getIOB(){
+  return IOB;
+}
+
 String dataRequestUrl(int count){
 
   String dataRequestUrl = prefix + nightscout + dataSuffix + String(count);
@@ -77,8 +98,13 @@ String overridesRequestUrl(int count){
   return OverridesRequestUrl;
 }
 
+String valuesRequestUrl(){
+  String valuesRequestUrl = prefix + nightscout + valuesSuffix;
+  return valuesRequestUrl;
+}
+
 String httpGETRequest(String serverName) {
-  Serial.println(serverName);
+  // Serial.println(serverName);
   WiFiClient client;
   HTTPClient http;
 
@@ -99,18 +125,14 @@ String httpGETRequest(String serverName) {
     Serial.print("Error code: ");
     Serial.println(httpResponseCode);
   }
-  // Free resources
   http.end();
-
-  Serial.print("payload: ");
-  Serial.println(payload);
 
   return payload;
 }
 
 void SetOverride(int index){
   if(WiFi.status()== WL_CONNECTED){
-    Serial.println(index);
+    //Serial.println(index);
     WiFiClient client;
     HTTPClient http;
     http.begin(client, prefix + nightscout + sendOverrideSuffix);
@@ -159,6 +181,17 @@ String httpGetOverrides(int count){
   }
 }
 
+String httpGetValues(){
+  if (WiFi.status() == WL_CONNECTED) {
+    JSONmsg = httpGETRequest(valuesRequestUrl());
+    return JSONmsg;
+  }
+  else {
+    Serial.println("WiFi Disconnected");
+    return "WiFi Disconnected";
+  }
+}
+
 void storeOverrides(){
   Serial.println("Storing overrides");
   String JSONmsg=httpGetOverrides(1);
@@ -169,9 +202,7 @@ void storeOverrides(){
   filter_0_loopSettings_overridePresets_0["name"] = true;
   filter_0_loopSettings_overridePresets_0["symbol"] = true;
 
-  //JsonArray root_0_loopSettings_overridePresets = overrides[0]["loopSettings"]["overridePresets"];
   DynamicJsonDocument doc(2048);
-
 
   DeserializationError error = deserializeJson(doc, JSONmsg, DeserializationOption::Filter(filter));
 
@@ -183,7 +214,6 @@ void storeOverrides(){
 
   overrides = doc[0]["loopSettings"]["overridePresets"];
 
-  int i = 1;
   for (JsonObject item : overrides)
   {
     String name = item["name"];
@@ -194,14 +224,6 @@ void storeOverrides(){
     OVERRIDE temp = {name, symbol, insulinPercent};
     overrideList.overrides[overrideList.size] = temp;
     overrideList.size++;
-
-    Serial.print(i++);
-    Serial.print(". name: ");
-    Serial.print(name);
-    Serial.print(" | symbol: ");
-    Serial.print(symbol);
-    Serial.print(" | percent: ");
-    Serial.println(percent);
   }
 }
 
@@ -270,4 +292,33 @@ void storeData(){
   }
   const char* root_0_direction = root_0["direction"]; // "Flat"
   direction = root_0_direction;
+}
+
+void storeValues(){
+  String JSONmsg = httpGetValues();
+
+  StaticJsonDocument<176> filter;
+  filter["sage"]["Sensor Start"]["display"] = true;
+  filter["cage"]["display"] = true;
+
+  JsonObject filter_loop_lastLoop = filter["loop"].createNestedObject("lastLoop");
+  filter_loop_lastLoop["cob"]["cob"] = true;
+  filter_loop_lastLoop["iob"]["iob"] = true;
+
+  StaticJsonDocument<384> doc;
+
+  DeserializationError error = deserializeJson(doc, JSONmsg, DeserializationOption::Filter(filter));
+
+  if (error) {
+    Serial.print("deserializeJson() failed: ");
+    Serial.println(error.c_str());
+    return;
+  }
+
+  const char* sage_Sensor_Start_display = doc["sage"]["Sensor Start"]["display"]; // "1d20h"
+  SAGE=sage_Sensor_Start_display;
+  const char* cage_display = doc["cage"]["display"]; // "62h"
+  CAGE=cage_display;
+  COB = doc["loop"]["lastLoop"]["cob"]["cob"]; // 10
+  IOB = doc["loop"]["lastLoop"]["iob"]["iob"]; // 0.1449520287156742
 }
