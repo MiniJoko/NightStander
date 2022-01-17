@@ -20,12 +20,12 @@ int calcOption(int row, int option, int optionCount){
 
 void menu(int option, int optionCount, String options[], const char* titleChr){
     ClearDisplay();
-    
+
     //title
     String title = titleChr;
     int xTitle = (SCREEN_WIDTH/2)-(title.length())*6/2;
     displayText(xTitle, 0, title, TEXT_SIZE, WHITE);
-    
+
     //options
     int color;
     int row;
@@ -44,8 +44,8 @@ void menu(int option, int optionCount, String options[], const char* titleChr){
     DrawFastVLine(3, 15, 37, WHITE);
     drawArrowUp(3, 7, WHITE);
     drawArrowDown(3, 54, WHITE);
-    
-    
+
+
     UpdateDisplay();
 }
 

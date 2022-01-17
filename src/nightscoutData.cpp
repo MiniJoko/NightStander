@@ -33,7 +33,7 @@ StaticJsonDocument<2048> data;
 String SAGE;
 String CAGE;
 double COB;
-double IOB; 
+double IOB;
 
 JsonArray overrides;
 OVERRIDE_LIST overrideList = {0};

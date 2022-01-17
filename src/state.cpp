@@ -55,7 +55,7 @@ void setState(STATE* state, MENULIST* menuList){
                         if(state->option == -1){state->option = menuList->menus[0]->optionCount-1;} //get visualmenu optioncount
                         //Serial.print("up: VISUAL_MENU "); checkStates(state);
                         break;
-                    case MAIN_MENU: case OVERRIDE_MENU:                      
+                    case MAIN_MENU: case OVERRIDE_MENU:
                         state->option--;
                         if(state->option == -1){state->option = menuList->menus[state->menu]->optionCount-1;} //get current menu optioncount
                         //Serial.print("up: MAIN_MENU/OVERRIDE_MENU"); checkStates(state);
@@ -106,12 +106,12 @@ void setState(STATE* state, MENULIST* menuList){
                                 state->menu=VISUAL_MENU;
                                 //Serial.print("confirm: MAINMENU-BACK"); checkStates(state);
                                 break;
-                            case OVERRIDES_OPTION:                            
+                            case OVERRIDES_OPTION:
                                 state->menu=OVERRIDE_MENU;
                                 state->option=BACK;
                                 //Serial.print("confirm: MAINMENU-OVERRIDES_OPTION"); checkStates(state);
                                 break;
-                            case RESET_DEVICE_OPTION:                
+                            case RESET_DEVICE_OPTION:
                                 state->menu=CONFIRM_WIPE_MENU;
                                 state->option=BACK;
                                 //Serial.print("confirm: MAIN_MENU-RESET_DEVICE_OPTION"); checkStates(state);
@@ -146,19 +146,19 @@ void setState(STATE* state, MENULIST* menuList){
                             }
                         //Serial.print("confirm: CONFIRM_WIPE_MENU"); checkStates(state);
                         break;
-                    case CONFIRM_OVERRIDE_MENU:                     
+                    case CONFIRM_OVERRIDE_MENU:
                         if(state->confirm==NO){state->menu = OVERRIDE_MENU;}
                         else if(state->confirm==YES){
                             override(state->option-2);
-                            state->menu = OVERRIDE_MENU; 
+                            state->menu = OVERRIDE_MENU;
                             state->confirm=NO;}
                         //Serial.print("confirm: CONFIRM_OVERRIDE_MENU"); checkStates(state);
                         break;
-                    case CANCEL_OVERRIDE_MENU:                       
+                    case CANCEL_OVERRIDE_MENU:
                         if(state->confirm==NO){state->menu = OVERRIDE_MENU;}
                         else if(state->confirm==YES){
                             cancelOverride();
-                            state->menu = OVERRIDE_MENU; 
+                            state->menu = OVERRIDE_MENU;
                             state->confirm=NO;}
                         //Serial.print("confirm: CANCEL_OVERRIDE_MENU"); checkStates(state);
                         break;
@@ -181,7 +181,7 @@ void StateHandler(STATE* state, MENULIST* menuList){
                     visualMenu(state->option);
                     break;
                 case MAIN_MENU: case OVERRIDE_MENU:
-                    menu(state->option, menuList->menus[state->menu]->optionCount, menuList->menus[state->menu]->options, menuList->menus[state->menu]->title);            
+                    menu(state->option, menuList->menus[state->menu]->optionCount, menuList->menus[state->menu]->options, menuList->menus[state->menu]->title);
                     break;
                 case CONFIRM_WIPE_MENU:
                     confirmWipeEeproomMenu(state->confirm);
@@ -199,7 +199,7 @@ void StateHandler(STATE* state, MENULIST* menuList){
             break;
     }
 }
-    
+
 void checkStates(STATE* state){
     if(state1!=state->menu||option!=state->option||state2!=state->confirm||OnOff!=state->OnOff){
         state1 = state->menu;

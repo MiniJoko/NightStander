@@ -22,4 +22,3 @@ void cancelOverrideMenu(int);
 void visualMenu(int option);
 void turnOffDisplay();
 #endif // MENUVISUALS
-
