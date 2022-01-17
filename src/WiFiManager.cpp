@@ -10,7 +10,7 @@
 
 String html_first ="<!DOCTYPE HTML> <html> <head> <title>Nightstander Configuration</title> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <link rel=\"icon\" href=\"data:,\"> <style> html { font-family: Arial; display: inline-block; text-align: center; } h2 { font-size: 2.0rem; } p {font-size: 2.0rem;} body { width: 375px; margin:0px auto; padding-bottom: 25px; background-color: #0c3b6d; color: aliceblue; } table{ margin-left: auto; margin-right: auto; } tbody{ display: inline-block; width:375px; } td:first-child{ width:60px; text-align: right; } td:last-child{ text-align: left; } td.save{ text-align: center; } .button{ height: 50px; width: 90px; color: aliceblue; background-color: rgb(40, 129, 184); } </style> </head> <body> <h2>Nightstander Configuration</h2> <form action=\"/\" method=\"post\"> <table> <tr> <td> <label for=\"wifi_ssid\">Choose Wifi</label> </td> <td> <select id=\"wifi_ssid\" name=\"wifi_ssid\">";
 
-String html_last ="</select> </td> </tr> <tr> <td> <label>Password: </label> </td> <td> <input maxlength=\"30\" name=\"password\"> </td> </tr> <tr> <td> <label>Nightscout: </label> </td> <td> <input maxlength=\"100\" name=\"nightscout\"> </td> </tr> <tr> <td> <label>Api-Key: </label> </td> <td> <input maxlength=\"100\" name=\"apikey\"> </td> </tr> <tr> <td class=\"save\" colspan=\"2\"> <input type=\"submit\" value=\"Save\" class=\"button\"> </td> </tr> </table> </form> </body> </html>";
+String html_last ="</select> </td> </tr> <tr> <td> <label>Password: </label> </td> <td> <input maxlength=\"30\" name=\"password\"> </td> </tr> <tr> <td> <label>Nightscout: </label> </td> <td> <input maxlength=\"100\" name=\"nightscout\"> </td> </tr><tr><td colspan=\"2\">You need to hash your api-key before you type it in here. Turn off wifi and visit this link. Type your api-key in the box and copy the results. Then turn wifi back on and make sure you are connected to Nightstander WiFi and paste the result here. <a href=\"http://www.sha1-online.com\" target="_blank" style=\"color:yellow\">http://www.sha1-online.com/</td></tr> <tr> <td> <label>Api-Key: </label> </td> <td> <input maxlength=\"100\" name=\"apikey\"> </td> </tr> <tr><td class=\"save\" colspan=\"2\"> <input type=\"submit\" value=\"Save\" class=\"button\"> </td> </tr> </table> </form> </body> </html>";
 
 
 int numberOfSSID = 0;
@@ -121,7 +121,7 @@ String AddWifiList(){
 }
 
 void handleRoot() {
-  if (server.hasArg("wifi_ssid")&& server.hasArg("password")&& server.hasArg("nightscout")&& server.hasArg("apikey")) {
+  if (server.hasArg("wifi_ssid")&& server.hasArg("password")&& server.hasArg("nightscout")) {
     handleSubmit();
   }
   else {
@@ -138,7 +138,7 @@ bool loadWIFICredsForm(){
   String s = EEPROM.readString(SSID_ADDR);
   String p = EEPROM.readString(PSK_ADDR);
 
-  const char* ssid     = "ESP32 WiFi Manager";
+  const char* ssid     = "Nightstander WiFi";
   const char* password = "12345678";
 
   Serial.println("Setting Access Point...");
@@ -150,10 +150,12 @@ bool loadWIFICredsForm(){
   Serial.print("AP IP address: ");
   Serial.println(IP);
   ClearDisplay();
-  displayText(10, 5, String("Connect to:"), TEXT_SIZE, WHITE);
-  displayText(15, 20, String(ssid), TEXT_SIZE, WHITE);
-  displayText(10, 35, String("and visit:"), TEXT_SIZE, WHITE);
-  displayText(15, 50, IP.toString(), TEXT_SIZE, WHITE);
+  displayText(10, 2, String("Connect to:"), TEXT_SIZE, WHITE);
+  displayText(15, 12, String(ssid), TEXT_SIZE, WHITE);
+  displayText(10, 22, String("use password: "), TEXT_SIZE, WHITE);
+  displayText(15, 32, password, TEXT_SIZE, WHITE);
+  displayText(10, 42, String("and visit:"), TEXT_SIZE, WHITE);
+  displayText(15, 52, IP.toString(), TEXT_SIZE, WHITE);
   UpdateDisplay();
   server.on("/", handleRoot);
 
