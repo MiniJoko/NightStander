@@ -64,14 +64,12 @@ void loop() {
   STATE state;
   state.menu=0;
   state.option=0;
-  state.menuType=0;
-  state.confirmMenu=0;
   state.confirm=0;
   state.OnOff=1;
-  
+
   while(true){
     setState(&state, &menuList);
     StateHandler(&state, &menuList);
   }
-  
+
 }
