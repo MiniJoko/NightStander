@@ -5,12 +5,14 @@
 #include <HTTPClient.h>
 #include <Timestamps.h>
 #include <EEPROM.h>
+#include <Adafruit_SSD1306.h>
 
 #include "time.h" //Library to handle standard "tm" time struct
 #include <ArduinoJson.h> //Library to handle JSON-messages
 #include "nightscoutData.h"
 #include "overrides.h"
 #include "WiFiManager.h"
+#include "GFX.h"
 
 String prefix = "http://";
 String nightscout;
@@ -132,6 +134,9 @@ String httpGETRequest(String serverName) {
 
 void SetOverride(int index){
   if(WiFi.status()== WL_CONNECTED){
+    ClearDisplay();
+    displayText(15, 2, String("Sending override"), TEXT_SIZE, WHITE);
+    UpdateDisplay();
     //Serial.println(index);
     WiFiClient client;
     HTTPClient http;
@@ -151,7 +156,19 @@ void SetOverride(int index){
 
     Serial.print("HTTP Response code: ");
     Serial.println(httpResponseCode);
+    if(httpResponseCode == 200){
+      ClearDisplay();
+      displayText(10, 2, String("Override sent"), TEXT_SIZE, WHITE);
+      UpdateDisplay();
+      delay(1000);
+    } else{
+      ClearDisplay();
+      displayText(10, 2, String("Something went wrong"), TEXT_SIZE, WHITE);
+      displayText(20, 2, String("Check you Nightscout"), TEXT_SIZE, WHITE);
 
+      UpdateDisplay();
+      delay(1000);
+    }
     http.end();
   }
   else {

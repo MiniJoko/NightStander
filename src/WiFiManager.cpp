@@ -94,9 +94,15 @@ void handleSubmit(){
 }
 
 void wipeEEPROM(){
+  ClearDisplay();
+  displayText(10, 2, String("Reseting Device. Please wait"), TEXT_SIZE, WHITE);
+  UpdateDisplay();
   for(int i=0;i<512;i++){
     EEPROM.write(i,0);
+    displayText(i-1, 32, ".", TEXT_SIZE, WHITE);
+    UpdateDisplay();
   }
+  ClearDisplay();
   EEPROM.commit();
   delay(3000);
   ESP.restart();
