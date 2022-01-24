@@ -7,6 +7,7 @@
 #include "nightscoutData.h"
 #include "deviceTime.h"
 #include "state.h"
+#include "graphVisual.h"
 
 unsigned long getDataTimer2 = 0;
 unsigned long updateDisplayTimer2 = 0;
@@ -77,6 +78,7 @@ void drawValueText(){
   String COBstr = String(COB,1)+"g";
   String SAGEstr = getSAGE();
   String CAGEstr = getCAGE();
+  drawInfoBar(0,0);
 
   fillRoundRect(15,15,105,11,2,WHITE);
   fillRoundRect(72,16,47,9,2,BLACK);
@@ -100,8 +102,7 @@ void drawValueText(){
 void displayValues(){
   ClearDisplay();
   drawFrame2();
-  drawTime(80, 0, 1, WHITE);
-  drawWifi(110, 0, 0, WHITE);
+  drawTime(93, 0, 1, WHITE);
   drawValueText();
   UpdateDisplay();
 }
