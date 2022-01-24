@@ -98,12 +98,12 @@ void wipeEEPROM(){
   displayText(10, 2, String("Reseting Device"), TEXT_SIZE, WHITE);
   displayText(10, 13, String("Please wait"), TEXT_SIZE, WHITE);
   UpdateDisplay();
+  int j = 0;
   for(int i=0;i<512;i++){
-    EEPROM.write(i,0);
-    if(1 < 127){
-      displayText(i-1, 32, ".", TEXT_SIZE, WHITE);
+    //EEPROM.write(i,0);
+    if(i > 120){
+      displayText(j, 32, ".", TEXT_SIZE, WHITE);
     }
-
     UpdateDisplay();
   }
   ClearDisplay();
