@@ -100,7 +100,7 @@ void wipeEEPROM(){
   UpdateDisplay();
   int j = 0;
   for(int i=0;i<512;i++){
-    //EEPROM.write(i,0);
+    EEPROM.write(i,0);
     if(i > 120){
       displayText(j, 32, ".", TEXT_SIZE, WHITE);
     }
