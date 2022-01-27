@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="resources/img/product.jpg" alt="product" width="200">
+<img src="resources/img/product.png" alt="product" width="200">
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
