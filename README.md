@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="resources/img/product.jpg" alt="product" width="200">
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -92,9 +92,6 @@ The following components are needed to build this device:
 https://sizable.se/P.JKY/esp32
 https://sizable.se/P.LZ7/0.96%22-i2c-oled-vit
 
-knapplänk
-
-motståndslänk
 
 ### Installation
 
@@ -135,7 +132,8 @@ motståndslänk
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
+<img src="resources/img/graphic.png" alt="Logo" width="200">
+<img src="resources/img/menu.png" alt="Logo" width="200">
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
