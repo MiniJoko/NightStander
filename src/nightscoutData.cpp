@@ -13,8 +13,9 @@
 #include "overrides.h"
 #include "WiFiManager.h"
 #include "GFX.h"
+#include"cert.h"
 
-String prefix = "http://";
+String prefix = "https://";
 String nightscout;
 String dataSuffix = ".herokuapp.com/api/v1/entries.json?count=";
 String overridesSuffix = ".herokuapp.com/api/v1/profile.json?count=1";
@@ -111,7 +112,8 @@ String httpGETRequest(String serverName) {
   HTTPClient http;
 
   // Your Domain name with URL path or IP address with path
-  http.begin(client, serverName);
+  http.begin(serverName, rootCACertificate);
+
 
   // Send HTTP POST request
   int httpResponseCode = http.GET();
