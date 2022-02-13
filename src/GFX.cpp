@@ -234,3 +234,12 @@ void drawTime(int x, int y, int size, uint16_t color){
   }
   displayText(x, y, timeStr, size, WHITE);
 }
+
+void drawLoading(){
+  ClearDisplay();
+  displayText(10, 12, "Loading", TEXT_SIZE, WHITE);
+  for (int i = 20; i < 30; i+=5){
+    displayText(10, i, ".", TEXT_SIZE, WHITE);
+    UpdateDisplay();
+  }
+}

@@ -172,10 +172,10 @@ void drawSGVwithUnit(int x, int y, uint16_t color){
 }
 
 void drawInfoBar(int x, int y){
-     fillRoundRect(0,0,95,11,2,WHITE);
+     fillRoundRect(0,0,91,11,2,WHITE);
      drawSGVwithUnit(x+2, y+2,BLACK);
-     drawDirection(x+74, y+2, 1, BLACK);
-     drawWifi(77,2, 0, BLACK);
+     drawDirection(x+72, y+2, 1, BLACK);
+     drawWifi(74,2, 0, BLACK);
 }
 
 void displayGraph(){

@@ -51,4 +51,3 @@ bool updateTimer(unsigned long milliseconds, unsigned long* timer){
   }
   return false;
 }
-
