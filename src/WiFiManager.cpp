@@ -101,14 +101,17 @@ void wipeEEPROM(){
   int j = 0;
   for(int i=0;i<512;i++){
     EEPROM.write(i,0);
-    if(i > 120){
+    if(i < 120){
       displayText(j, 32, ".", TEXT_SIZE, WHITE);
+      j++;
     }
     UpdateDisplay();
   }
   ClearDisplay();
   EEPROM.commit();
-  delay(3000);
+  displayText(10, 32, "Rebooting...", TEXT_SIZE, WHITE);
+  UpdateDisplay();
+  delay(2000);
   ESP.restart();
 }
 
