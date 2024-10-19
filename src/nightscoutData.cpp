@@ -17,10 +17,10 @@
 
 String prefix = "https://";
 String nightscout;
-String dataSuffix = ".herokuapp.com/api/v1/entries.json?count=";
-String overridesSuffix = ".herokuapp.com/api/v1/profile.json?count=1";
-String sendOverrideSuffix = ".herokuapp.com/api/v2/notifications/loop";
-String valuesSuffix = ".herokuapp.com/api/v2/properties/sage,cage,loop";
+String dataSuffix = "/api/v1/entries.json?count=";
+String overridesSuffix = "/api/v1/profile.json?count=1";
+String sendOverrideSuffix = "/api/v2/notifications/loop";
+String valuesSuffix = "/api/v2/properties/sage,cage,loop";
 String apikey;
 
 String JSONmsg;
